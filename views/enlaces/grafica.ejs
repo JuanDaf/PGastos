@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head');%>
+    
+</head>
+<body>
+    <header><%- include('../partials/navbar');%></header>
+   
+  <div class="container p-2 rounded img-fluid shadow p-3 mb-5 bg-body rounded " >
+    <div id="app">
+      <h3 class="text-center fw-bold">Ingresos vs Gastos</h3>
+      <chart></chart>
+    </div>
+  </div>
+
+  <div class="container py-4 rounded img-fluid shadow p-3 mb-5 bg-body rounded">
+    <h3 class="text-center fw-bold"> Tu Estado Financiero en Los Ultimos Tres Meses</h3>
+    <div class="row py-3">
+      <% for(let i = 0; i < 3; i++) {%>
+       <div class="col-md-4 py-2">
+        <% if(ingresos[i].sumain == gastos[i].sumagas) {%>
+         
+          <div class="card bg-dark text-white">
+              <img src="/img/igual.jpg" class="card-img" alt="...">
+              <div class="card-img-overlay">
+                <h5 class="card-title"> <strong> Fecha: <%= ingresos[i].Fecha %></strong> </h5>
+                <p class="card-text"> Tus ingresos fueron iguales a tus gastos; con un valor en gastos de $<strong> <%=gastos[i].sumagas %></strong> y un valor de ingresos: $<strong> <%=ingresos[i].sumain%></strong></p>
+                <p class="card-text"> Publicado justo ahora </p>
+                <h4 class="text-center py-5"> <i class="fas fa-coins"></i> <strong>NO HAY PROBLEMA</strong> <i class="fas fa-chart-bar"></i> </h4>
+              </div>
+            </div>
+      <%}%>
+        <% if(ingresos[i].sumain > gastos[i].sumagas) {%>
+    
+          <div class="card bg-dark text-white">
+              <img src="/img/ganancias.jpg" class="card-img" alt="...">
+              <div class="card-img-overlay">
+                <h5 class="card-title"><strong> Fecha: <%= ingresos[i].Fecha %></strong> </h5>
+                <p class="card-text"> Para este mes, tus ingresos fueron mayores a tus gastos; con un valor de ingresos de  $<strong> <%=ingresos[i].sumain%></strong> y un valor en gastos de $<strong> <%=gastos[i].sumagas %></strong>.
+                Lo que se traduce en ingresos por <strong> ($: <%= (ingresos[i].sumain - gastos[i].sumagas )%>)</strong>  superiores a los gastos.</p>
+                <p class="card-text">Publicado justo ahora</p>
+                <h4 class="text-center py-5"> <i class="fas fa-thumbs-up"></i> <strong>FELICITACIONES</strong> <i class="fas fa-chart-line"></i> </h4>
+              </div>
+            </div>
+            <% } else { %>  
+              <% if(ingresos[i].sumain < gastos[i].sumagas) {%>
+            <div class="card bg-dark text-dark">
+              <img src="/img/perdidas.jpg" class="card-img" alt="...">
+              <div class="card-img-overlay">
+                <h5 class="card-title ">Fecha: <%= ingresos[i].Fecha %></h5>
+                <p class="card-text">Para este mes, tus ingresos fueron inferiores a tus gastos; con un valor de ingresos de  $<strong> <%=ingresos[i].sumain%></strong> y un valor en gastos de $<strong> <%=gastos[i].sumagas %></strong>. 
+                  Lo que se traduce en gastos por <strong> ($: <%= (gastos[i].sumagas - ingresos[i].sumain)%>)</strong>  superiores a los ingresos.</p>
+                <p class="card-text">Publicado justo ahora</p
+                <h4 class="text-center py-5"> <i class="fas fa-thumbs-down"></i> <strong> DEBES CUIDAR TUS FINANZAS</strong>  </h4
+              </div>
+            </div>
+            <%}%>
+            <%}%>
+       </div>
+       <%}%>
+    </div>
+  </div>
+
+
+    <footer><%- include('../partials/footer');%></footer>
+
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+
+   <!-- Vue js -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+
+<!-- Chart par Vue -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script src="https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js"></script>
+
+<!-- Axios -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+
+<script>
+let url = 'http://localhost:4000/enlaces/api/datos' // API Node Js
+let url2 = 'http://localhost:4000/enlaces/api/datos2' // API Node Js
+
+Vue.component('chart', {
+  extends: VueChartJs.Bar,
+  data(){
+    return{
+      Fechas: [],
+      Fechas2: [],
+      sumain: [],
+      sumagas: [],
+      bgColors: ['#ea80fc','#e040fb', '#d500f9', '#aa00ff', '#f8bbd0', '#f06292', '#ec407a', '#d81b60', '#1de9b6', '#00bfa5', '#e65100'],
+      bgColors2: ['#e65100','#00bfa5','#1de9b6', '#d81b60', '#ec407a', '#f06292', '#f8bbd0', '#aa00ff', '#d500f9','#e040fb','#ea80fc']
+    }
+  },
+  mounted () {
+    this.mostrar()
+    this.renderChart({
+        labels: this.Fechas,
+        datasets: [
+            {
+                label: 'Ingresos $',
+                labels: this.Fechas,
+                backgroundColor: this.bgColors,              
+                data: this.sumain,                
+            },
+            {
+              label: 'Gastos $',
+              labels: this.Fechas2,
+                backgroundColor: this.bgColors2,              
+                data: this.sumagas,
+            }
+        ]
+    }, {responsive: true, maintainAspectRatio: false,scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    }})
+  },
+  methods:{
+    mostrar() {
+         axios
+        .get(url)
+            .then(response => {
+            //console.log(response.data) //traemos todos los datos desde la API
+            response.data.forEach(element => {
+                this.Fechas.push(element.Fecha)
+                this.sumain.push(element.sumain)
+            })        
+            //console.log(document.getElementById('line-chart'))//el ID donde se genera el grafico es 'line-chart'                    
+        }),
+        axios
+        .get(url2)
+            .then(responsee => {
+                //console.log(response.data) //traemos todos los datos desde la API
+                responsee.data.forEach(elemento => {
+                    this.Fechas2.push(elemento.Fecha)
+                    this.sumagas.push(elemento.sumagas)
+                    console.log(elemento.sumagas);
+                    
+             })        
+            //console.log(document.getElementById('line-chart'))//el ID donde se genera el grafico es 'line-chart'                    
+        })
+      }
+  }  
+})
+var vm = new Vue({
+  el: '#app',
+})
+</script>
+</body>
+</html>

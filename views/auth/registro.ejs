@@ -1,0 +1,82 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="font-family: Century Gothic">
+          <h5 class="modal-title" id="exampleModalLabel">Registro de Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/registro" method="POST">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6 max-auto">
+                <div class="form-floating mb-3 ">
+                  <input type="text" name="Nombre" class="form-control " id="floatingInput" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,50)" onKeyDown="return limitar(event,this.value,50)">
+                  <label for="floatingInput"><i class="fas fa-user"> </i> Nombre</label>
+                </div>
+              </div>
+              <div class="col-md-6 max-auto">
+                <div class="form-floating mb-3">
+                  <input type="text" name="Apellido" class="form-control " id="floatingInput" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,50)" onKeyDown="return limitar(event,this.value,50)">
+                  <label for="floatingInput"><i class="fas fa-user"> </i> Apellido</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 max-auto">
+                <div class="form-floating mb-3">
+                  <input type="text" name="Telefono" class="form-control " id="floatingInput" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,20)" onKeyDown="return limitar(event,this.value,20)" onkeypress= "return validarNumero(event)">
+                  <label for="floatingInput"><i class="fas fa-mobile-alt"></i> Telefono</label>
+                </div>
+              </div>
+              <div class="col-md-6 max-auto">
+                <div class="form-floating mb-3">
+                  <input type="text" name="Direccion" class="form-control " id="floatingInput" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,80)" onKeyDown="return limitar(event,this.value,80)">
+                  <label for="floatingInput"><i class="fas fa-directions"></i> Direccion</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-floating mb-3">
+                  <input type="email" name="Email" class="form-control " id="floatingInput" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,60)" onKeyDown="return limitar(event,this.value,60)">
+                  <label for="floatingInput"><i class="fas fa-at"></i> Email</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" name="Usuario" class="form-control " id="floatingInput" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,25)" onKeyDown="return limitar(event,this.value,25)">
+                  <label for="floatingInput"><i class="fas fa-user-circle"></i> Usuario</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" name="Id" class="form-control " id="floatingInput" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,15)" onKeyDown="return limitar(event,this.value,15)" onkeypress="return validarNumero(event)">
+                  <label for="floatingInput"><i class="fas fa-id-card"></i> Cedula</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 max-auto">
+                <div class="form-floating">
+                  <input type="password" name="Contrasena" class="form-control " id="floatingPassword" placeholder="Password" onKeyUp="return limitar(event,this.value,60)" onKeyDown="return limitar(event,this.value,60)">
+                  <label for="floatingPassword"><i class="fas fa-lock"></i> Contraseña</label>
+                </div>
+              </div>
+              <div class="col-md-6 max-auto">
+                <div class="form-floating">
+                  <input type="password" name="Contrasena2" class="form-control"  id="floatingPassword" placeholder="Password" onKeyUp="return limitar(event,this.value,60)" onKeyDown="return limitar(event,this.value,60)">
+                  <label for="floatingPassword"><i class="fas fa-lock"></i> Contraseña</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button  class="btn btn-primary">Registrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

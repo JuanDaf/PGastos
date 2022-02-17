@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head');%>
+</head>
+<body>
+    <header><%- include('../partials/navbar');%></header>
+    <%- include('../partials/alertas2');%>
+    <div class="container py-4 ">
+        <div class="row">
+            <div class="col-md-8">
+                <form action="/enlaces/editarp" method="POST" class="rounded img-fluid shadow p-3 mb-5 bg-body rounded">
+                    <div class="row">
+                        <% datos.forEach(function(datos) { %>
+                        <div class="col-md-6 max-auto">
+                          <div class="form-floating mb-3 ">
+                            <input type="text" name="Nombre" class="form-control " id="floatingInput" value="<%= datos.Nombre %>" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,50)" onKeyDown="return limitar(event,this.value,50)" >
+                            <label for="floatingInput"><i class="fas fa-user"> </i> Nombre</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6 max-auto">
+                          <div class="form-floating mb-3">
+                            <input type="text" name="Apellido" class="form-control " id="floatingInput"  value="<%= datos.Apellido %>" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,50)" onKeyDown="return limitar(event,this.value,50)" >
+                            <label for="floatingInput"><i class="fas fa-user"> </i> Apellido</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 max-auto">
+                          <div class="form-floating mb-3">
+                            <input type="text" name="Telefono" class="form-control " id="floatingInput" value="<%= datos.Telefono %>" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,20)" onKeyDown="return limitar(event,this.value,20)" onkeypress= "return validarNumero(event)">
+                            <label for="floatingInput"><i class="fas fa-mobile-alt"></i> Telefono</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6 max-auto">
+                          <div class="form-floating mb-3">
+                            <input type="text" name="Direccion" class="form-control " id="floatingInput" value="<%= datos.Direccion %>" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,80)" onKeyDown="return limitar(event,this.value,80)" >
+                            <label for="floatingInput"><i class="fas fa-directions"></i> Direccion</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-floating mb-3">
+                            <input type="email" name="Email" class="form-control " id="floatingInput" value="<%= datos.Email %>" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,60)" onKeyDown="return limitar(event,this.value,60)" >
+                            <label for="floatingInput"><i class="fas fa-at"></i> Email</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-floating mb-3">
+                            <input type="text" name="Usuario" class="form-control " id="floatingInput" value="<%= datos.Usuario %>" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,25)" onKeyDown="return limitar(event,this.value,25)" >
+                            <label for="floatingInput"><i class="fas fa-user-circle"></i> Usuario</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-floating mb-3">
+                            <input type="text" name="Id" class="form-control " id="floatingInput" value="<%= datos.Id %>"placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,15)" onKeyDown="return limitar(event,this.value,15)" onkeypress="return validarNumero(event)" disabled>
+                            <label for="floatingInput"><i class="fas fa-id-card"></i> Cedula</label>
+                          </div>
+                        </div>
+                      </div>
+                      <% }); %>
+                      <div class="form-check form-switch py-4">
+                        <input class="form-check-input" type="checkbox" id="check">
+                        <label class="form-check-label" for="flexSwitchCheckChecked">Click para Cambiar Contraseña </label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-floating mb-3">
+                              <input type="password" name="Password" class="form-control " id="floatingInput" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,60)" onKeyDown="return limitar(event,this.value,60)" >
+                              <label for="floatingInput"><i class="fas fa-lock"></i> Contraseña Actual para Efectuar Cambios</label>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="row" hidden id="Campo">
+                        <div class="col-md-6 max-auto">
+                          <div class="form-floating">
+                            <input type="password" name="Contrasena" class="form-control " id="floatingPassword" placeholder="Password" onKeyUp="return limitar(event,this.value,60)" onKeyDown="return limitar(event,this.value,60)" >
+                            <label for="floatingPassword"><i class="fas fa-lock"></i> Contraseña Nueva</label>
+                          </div>
+                        </div>
+                        <div class="col-md-6 max-auto">
+                          <div class="form-floating">
+                            <input type="password" name="Contrasena2" class="form-control"  id="floatingPassword" placeholder="Password" onKeyUp="return limitar(event,this.value,60)" onKeyDown="return limitar(event,this.value,60)" >
+                            <label for="floatingPassword"><i class="fas fa-lock"></i> Contraseña Nueva</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-grid gap-2 py-4">
+                        <button class="btn btn-primary" >Editar</button>
+                      </div>
+                </form>
+            </div>
+            <div class="col-md-4 py-4">
+                <img src="/img/usuario.jpg" alt="" class="rounded img-fluid shadow p-3 mb-5 bg-body rounded ">
+            </div>
+        </div>
+    </div>
+
+
+    <footer><%- include('../partials/footer');%></footer>
+
+    <script>
+        var check1 =  document.getElementById('check');
+        var campo =  document.getElementById('Campo');
+        check1.addEventListener('click',function(){
+          if(check1.checked === true){
+            campo.hidden = false;
+            console.log(check1);
+          }else{
+            campo.hidden = true;
+          }
+      });
+
+    </script>
+    <script src="/js/validardatos.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+
+</body>
+</html>

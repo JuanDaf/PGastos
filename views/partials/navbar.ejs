@@ -1,0 +1,40 @@
+<nav class="navbar  navbar-expand-lg navbar-dark bg-primary  ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/inicio"><i class="fas fa-user-circle"></i> <%= success %></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav justify-content-end">
+        <li class="nav-item dropdown text-center">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-money-bill-alt"></i> Ingresos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item text-center" href="/enlaces/ringreso"><i class="fas fa-address-book"></i> Registrar</a></li>
+            <li><a class="dropdown-item text-center" href="/enlaces/datosingresos"> <i class="fas fa-server"></i> Ver Datos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown text-center">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-wallet"></i> Gastos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item text-center" href="/enlaces/rgastos"> <i class="fas fa-address-book"></i> Registrar</a></li>
+            <li><a class="dropdown-item text-center" href="/enlaces/datosgastos"><i class="fas fa-server"></i> Ver Datos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item text-center">
+          <a class="nav-link" href="/enlaces/grafica"><i class="fas fa-chart-pie"></i> Descripción Grafica</a>
+        </li>
+        <li class="nav-item text-center">
+          <a class="nav-link" href="/enlaces/perfil"><i class="fas fa-address-card"></i> Perfil</a>
+        </li>
+        <li class="nav-item text-center">
+          <a class="nav-link" href="/salir"><i class="fas fa-sign-out-alt"></i> Salir</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

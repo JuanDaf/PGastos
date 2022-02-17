@@ -1,0 +1,13 @@
+body{
+   
+    background: url('/img/fondologin.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size:cover ;
+
+}
+
+#imgg{
+
+    box-shadow: 6px 10px 15px 1px rgb(8,0,0.9);
+}

@@ -1,0 +1,55 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="font-family: Century Gothic">
+          <h5 class="modal-title" id="exampleModalLabel">Editar registro</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/enlaces/editar" method="POST">
+           <div class="container py-5">
+            <div class="col-md-12 max-auto">
+                <div class="form-floating mb-3 ">
+                    <input type="text" name="Tipo" class="form-control " id="Tipo" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,50)" onKeyDown="return limitar(event,this.value,50)">
+                    <label for="floatingInput"><i class="fas fa-question-circle"></i> Tipo de Ingreso</label>
+                  </div>
+               </div>
+               <div class="col-md-12 max-auto">
+                <div class="form-floating mb-3 ">
+                    <input type="text" name="Monto" class="form-control " id="Monto" placeholder="name@example.com"  onKeyUp="return limitar(event,this.value,50)" onKeyDown="return limitar(event,this.value,50)">
+                    <label for="floatingInput"><i class="fas fa-money-bill-wave"></i> Monto del Ingreso</label>
+                  </div>
+               </div>
+               <div class="col-md-12 max-auto">
+                <div class="form-floating">
+                    <textarea type="text" class="form-control" name="Detalle" placeholder="Leave a comment here" id="Detalle" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2"><i class="fas fa-question-circle"></i> Detalle del Ingreso</label>
+                  </div>
+               </div>
+               <div class="col-md-12 py-2">
+                  <div class="py-3 max-auto "> 
+                    <input class="py-2 border border-info rounded " type="date" id="start1" name="Fecha" value=""  min="" max="" >
+                  </div>
+                  <div>
+                    <input type="text" id="Numero" name="Numero" hidden >
+                  </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button class="btn btn-primary">Editar</button>
+          </div>
+           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+      function dt (tipo, monto, detalle, fecha, id){
+        document.getElementById('Tipo').value = tipo;
+        document.getElementById('Monto').value = monto;
+        document.getElementById('Detalle').value = detalle ;
+        document.getElementById('start1').value = fecha;
+        document.getElementById('Numero').value = id;
+      }
+
+  </script>
